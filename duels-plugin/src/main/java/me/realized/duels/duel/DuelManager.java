@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+
 import me.realized.duels.DuelsPlugin;
+import me.realized.duels.api.arena.Arena;
 import me.realized.duels.api.event.match.MatchEndEvent.Reason;
 import me.realized.duels.api.event.match.MatchStartEvent;
 import me.realized.duels.arena.ArenaImpl;
@@ -48,12 +50,7 @@ import me.realized.duels.util.compat.Titles;
 import me.realized.duels.util.function.Pair;
 import me.realized.duels.util.inventory.InventoryUtil;
 import net.md_5.bungee.api.chat.ClickEvent.Action;
-import org.bukkit.Bukkit;
-import org.bukkit.Color;
-import org.bukkit.FireworkEffect;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
@@ -625,12 +622,37 @@ public class DuelManager implements Loadable {
         }
 
         @EventHandler
-        public void onInteract(PlayerInteractEvent event) {
-            Player player = event.getPlayer();
-            ArenaImpl arena = arenaManager.get(player);
+        public void onTeleport(PlayerTeleportEvent event) {
+            Location toLoc = event.getTo();
+            if (toLoc == null) return;
 
-            if (arena != null && arena.isEndGame()) {
-                event.setCancelled(true);
+            Player player = event.getPlayer();
+            World toWorld = toLoc.getWorld();
+            World fromWorld = event.getFrom().getWorld();
+
+            // Ignore teleports inside the same world
+            if (toWorld.equals(fromWorld))
+                return;
+
+            // Ignore if player is in a match or spectating
+            if (arenaManager.isInMatch(player)
+                    || playerManager.get(player) != null
+                    || DuelsPlugin.getInstance().getSpectateManager().isSpectating(player)) {
+                return;
+            }
+
+            // Check if they are teleporting into any arena world
+            for (Arena arena : arenaManager.getArenas()) {
+                Location arenaLocation = arena.getPosition(1);
+                if (arenaLocation == null) continue;
+
+                World arenaWorld = arenaLocation.getWorld();
+                if (arenaWorld != null && arenaWorld.equals(toWorld)) {
+
+                    // Cancel teleport & notify once
+                    event.setCancelled(true);
+                    return; // stop checking more arenas
+                }
             }
         }
 

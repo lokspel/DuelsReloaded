@@ -15,8 +15,8 @@ processResources {
 
 dependencies {
     compileOnly 'org.jetbrains:annotations-java5:22.0.0'
-    compileOnly 'org.projectlombok:lombok:1.18.36'
-    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+    compileOnly 'org.projectlombok:lombok:1.18.42'
+    annotationProcessor 'org.projectlombok:lombok:1.18.42'
     implementation 'org.spigotmc:spigot-api:1.14.4-R0.1-SNAPSHOT'
     implementation 'com.mojang:authlib:1.5.21'
     compileOnly 'me.clip:placeholderapi:2.11.7'
@@ -44,7 +44,7 @@ dependencies {
     implementation project(':duels-worldguard')
     implementation project(':duels-worldguard-v6')
     implementation project(':duels-worldguard-v7')
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.20.1'
 }
 
 shadowJar {

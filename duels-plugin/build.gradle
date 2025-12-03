@@ -1,13 +1,14 @@
-clean.doFirst {
+clean {
     delete "$rootDir/out/"
 }
+
 
 processResources {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 
     from(sourceSets.main.resources.srcDirs) {
         include '**/*.yml'
-        expand(VERSION: project.version) // replaces ${VERSION} in files
+        filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [VERSION: project.version])
     }
 }
 
@@ -19,30 +20,27 @@ dependencies {
     implementation 'com.mojang:authlib:1.5.21'
     compileOnly 'me.clip:placeholderapi:2.11.7'
     compileOnly 'com.github.sirblobman.api:core:2.9-SNAPSHOT'
-    compileOnly 'com.github.sirblobman.combatlogx:api:11.4-SNAPSHOT'
-
-    implementation('net.essentialsx:EssentialsX:2.21.2') {
+    compileOnly("com.github.sirblobman.combatlogx:api:11.6-SNAPSHOT")
+    implementation ('net.essentialsx:EssentialsX:2.21.2') {
         transitive = false
     }
-    implementation files("$rootDir/libs/Vault-1.6.7.jar")
-    implementation files("$rootDir/libs/CombatTagPlus.jar")
-    implementation files("$rootDir/libs/AntiRelog-3.0.11.jar")
-    implementation files("$rootDir/libs/PvPManager-3.7.16.jar")
-    implementation files("$rootDir/libs/Factions-1.6.9.5-U0.1.14.jar")
-    implementation files("$rootDir/libs/MassiveCore.jar")
-    implementation files("$rootDir/libs/Factions.jar")
-    implementation files("$rootDir/libs/MyPet-2.3.4.jar")
-    implementation files("$rootDir/libs/BountyHunters-2.2.6.jar")
-    implementation files("$rootDir/libs/SimpleClans-2.14.4.1.jar")
-    implementation files("$rootDir/libs/LeaderHeadsAPI.jar")
-    implementation files("$rootDir/libs/MVdWPlaceholderAPI-3.1.1.jar")
+    compileOnly files('../libs/MVdWPlaceholderAPI-3.1.1.jar')
+    compileOnly files('../libs/Vault-1.6.7.jar')
+    compileOnly files('../libs/CombatTagPlus.jar')
+    compileOnly files('../libs/AntiRelog-3.0.11.jar')
+    compileOnly files('../libs/PvPManager-3.7.16.jar')
+    compileOnly files('../libs/Factions-1.6.9.5-U0.1.14.jar')
+    compileOnly files('../libs/MassiveCore.jar')
+    compileOnly files('../libs/Factions.jar')
+    compileOnly files('../libs/MyPet-2.3.4.jar')
+    compileOnly files('../libs/BountyHunters-2.2.6.jar')
+    compileOnly files('../libs/SimpleClans-2.14.4.1.jar')
+    compileOnly files('../libs/LeaderHeadsAPI.jar')
 
-    // Project modules
     implementation project(':duels-api')
     implementation project(':duels-worldguard')
     implementation project(':duels-worldguard-v6')
     implementation project(':duels-worldguard-v7')
-
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.20.1'
 }
 

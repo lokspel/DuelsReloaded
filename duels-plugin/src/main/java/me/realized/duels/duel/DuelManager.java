@@ -533,6 +533,9 @@ public class DuelManager implements Loadable {
                 return;
             }
 
+            if (config.isHideDeathMessage())
+                event.setDeathMessage(null);
+
             final Inventory top = player.getOpenInventory().getTopInventory();
 
             if (top.getType() == InventoryType.CRAFTING) {

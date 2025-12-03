@@ -247,6 +247,8 @@ public class Config extends AbstractConfiguration<DuelsPlugin> {
     private boolean soupRemoveEmptyBowl;
     @Getter
     private boolean soupCancelIfAlreadyFull;
+    @Getter
+    private boolean hideDeathMessage;
 
     private final Map<String, MessageSound> sounds = new HashMap<>();
 
@@ -385,6 +387,8 @@ public class Config extends AbstractConfiguration<DuelsPlugin> {
         soupHeartsToRegen = Math.max(configuration.getDouble("soup.hearts-to-regen", 3.5), 0);
         soupRemoveEmptyBowl = configuration.getBoolean("soup.remove-empty-bowl", true);
         soupCancelIfAlreadyFull = configuration.getBoolean("soup.cancel-if-already-full", true);
+
+        hideDeathMessage = configuration.getBoolean("duel.match.hide-death-message", true);
 
         final ConfigurationSection sounds = configuration.getConfigurationSection("sounds");
 

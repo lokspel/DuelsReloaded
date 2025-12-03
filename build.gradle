@@ -20,8 +20,10 @@ subprojects {
     apply plugin: 'com.gradleup.shadow'
     apply plugin: 'maven-publish'
 
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 
     repositories {
         mavenCentral()

@@ -7,6 +7,7 @@ public final class EnumUtil {
 
     private EnumUtil() {}
 
+    @SuppressWarnings("unchecked")
 	public static <E> E getByName(final String name, final Class<E> clazz) {
 		if (clazz == null) {
 			throw new IllegalArgumentException("Class cannot be null");
@@ -25,7 +26,8 @@ public final class EnumUtil {
 			final Field[] fields = clazz.getDeclaredFields();
 			for (final Field field : fields) {
 				if (field.getType() == clazz && field.getName().equalsIgnoreCase(name)) {
-					return (E) field.get(null); // Get the static field value
+                    field.setAccessible(true); // allow access to private fields
+                    return (E) field.get(null); // Safe cast with annotation
 				}
 			}
 		} catch (final IllegalAccessException e) {

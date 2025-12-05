@@ -32,7 +32,7 @@ dependencies {
     compileOnly files('../libs/Factions-1.6.9.5-U0.1.14.jar')
     compileOnly files('../libs/MassiveCore.jar')
     compileOnly files('../libs/Factions.jar')
-    compileOnly files('../libs/MyPet-2.3.4.jar')
+    compileOnly files('../libs/MyPet-3.13.6.jar')
     compileOnly files('../libs/BountyHunters-2.2.6.jar')
     compileOnly files('../libs/SimpleClans-2.14.4.1.jar')
     compileOnly files('../libs/LeaderHeadsAPI.jar')

@@ -64,6 +64,11 @@ subprojects {
         }
 
         maven {
+            name = 'factions-repo'
+            url = 'https://dependency.download/releases/'
+        }
+
+        maven {
             name = 'sirblobman-public'
             url = 'https://nexus.sirblobman.xyz/public/'
         }

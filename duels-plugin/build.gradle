@@ -24,14 +24,12 @@ dependencies {
     implementation ('net.essentialsx:EssentialsX:2.21.2') {
         transitive = false
     }
+    implementation 'dev.kitteh:factions:4.0.0'
     compileOnly files('../libs/MVdWPlaceholderAPI-3.1.1.jar')
     compileOnly files('../libs/Vault-1.6.7.jar')
     compileOnly files('../libs/CombatTagPlus.jar')
     compileOnly files('../libs/antirelog-3.0.11.jar')
     compileOnly files('../libs/PvPManager-3.7.16.jar')
-    compileOnly files('../libs/Factions-1.6.9.5-U0.1.14.jar')
-    compileOnly files('../libs/MassiveCore.jar')
-    compileOnly files('../libs/Factions.jar')
     compileOnly files('../libs/MyPet-3.13.6.jar')
     compileOnly files('../libs/BountyHunters-2.2.6.jar')
     compileOnly files('../libs/SimpleClans-2.14.4.1.jar')

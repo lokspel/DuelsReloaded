@@ -14,7 +14,7 @@ public class HookManager extends AbstractHookManager<DuelsPlugin> {
         register(AntiRelogHook.NAME, AntiRelogHook.class);
         register(CombatTagPlusHook.NAME, CombatTagPlusHook.class);
         register(EssentialsHook.NAME, EssentialsHook.class);
-        register(FactionsHook.NAME, FactionsHook.class);
+        register(FactionsUUIDHook.NAME, FactionsUUIDHook.class);
         register(LeaderHeadsHook.NAME, LeaderHeadsHook.class);
         register(McMMOHook.NAME, McMMOHook.class);
         register(MVdWPlaceholderHook.NAME, MVdWPlaceholderHook.class);

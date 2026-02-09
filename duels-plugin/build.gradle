@@ -18,7 +18,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.42'
     implementation 'org.spigotmc:spigot-api:1.14.4-R0.1-SNAPSHOT'
     implementation 'com.mojang:authlib:1.5.21'
-    compileOnly 'me.clip:placeholderapi:2.12.0'
+    compileOnly 'me.clip:placeholderapi:2.12.2'
     compileOnly 'com.github.sirblobman.api:core:2.9-SNAPSHOT'
     compileOnly("com.github.sirblobman.combatlogx:api:11.6-SNAPSHOT")
     implementation ('net.essentialsx:EssentialsX:2.21.2') {

@@ -1,9 +1,7 @@
 package me.realized.duels.hook.hooks;
 
-import me.NoChance.PvPManager.Events.PlayerTagEvent;
-import me.NoChance.PvPManager.Managers.PlayerHandler;
-import me.NoChance.PvPManager.PvPManager;
-import me.NoChance.PvPManager.PvPlayer;
+import me.chancesd.pvpmanager.event.PlayerTagEvent;
+import me.chancesd.pvpmanager.player.CombatPlayer;
 import me.realized.duels.DuelsPlugin;
 import me.realized.duels.arena.ArenaManagerImpl;
 import me.realized.duels.config.Config;
@@ -26,7 +24,7 @@ public class PvPManagerHook extends PluginHook<DuelsPlugin> {
         this.arenaManager = plugin.getArenaManager();
 
         try {
-            Class.forName("me.NoChance.PvPManager.Events.PlayerTagEvent");
+            Class.forName("me.chancesd.pvpmanager.event.PlayerTagEvent");
         } catch (ClassNotFoundException ex) {
             throw new RuntimeException("This version of " + getName() + " is not supported. Please try upgrading to the latest version.");
         }
@@ -39,13 +37,7 @@ public class PvPManagerHook extends PluginHook<DuelsPlugin> {
             return false;
         }
 
-        final PlayerHandler playerHandler = ((PvPManager) getPlugin()).getPlayerHandler();
-
-        if (playerHandler == null) {
-            return false;
-        }
-
-        final PvPlayer pvPlayer = playerHandler.get(player);
+        final CombatPlayer pvPlayer = CombatPlayer.get(player);
         return pvPlayer != null && pvPlayer.isInCombat();
     }
 

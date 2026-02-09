@@ -25,11 +25,11 @@ dependencies {
         transitive = false
     }
     implementation 'dev.kitteh:factions:4.0.0'
+    implementation 'me.chancesd.pvpmanager:pvpmanager:4.0.8'
     compileOnly files('../libs/MVdWPlaceholderAPI-3.1.1.jar')
     compileOnly files('../libs/Vault-1.6.7.jar')
     compileOnly files('../libs/CombatTagPlus.jar')
     compileOnly files('../libs/antirelog-3.0.11.jar')
-    compileOnly files('../libs/PvPManager-3.7.16.jar')
     compileOnly files('../libs/MyPet-3.13.6.jar')
     compileOnly files('../libs/BountyHunters-2.2.6.jar')
     compileOnly files('../libs/SimpleClans-2.14.4.1.jar')
